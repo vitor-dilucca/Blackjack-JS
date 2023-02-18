@@ -17,7 +17,7 @@ function startGame() {
 
 function getRandomCard(){
   return Math.floor(
-    Math.random()*22
+    Math.random()*13
   )
 }
 
@@ -87,4 +87,12 @@ function newCard() {
 
 // console.log(getTotalRaceTime())
 
-console.log(Math.floor( Math.random()*21 ))
+// console.log(Math.floor( Math.random()*21 ))
+
+function rollDice(){
+  return Math.floor(
+    Math.random()*7
+  )
+}
+
+console.log(rollDice())
