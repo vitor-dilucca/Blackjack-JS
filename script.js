@@ -6,12 +6,16 @@ let message = ""
 let messageEl = document.getElementById("message-el")
 let somaEl = document.querySelector("#soma-el")
 let cartasEl = document.querySelector("#cartas-el")
-
-let playerName = "Vitor"
-let money = 150
-
 let playerEl = document.querySelector("#player-el")
-playerEl.textContent=playerName+ ": R$"+ money
+let player = {
+  name: "Vitor",
+  money: 150,
+  dizerOi: function(){
+    console.log("hheissann!")
+  }
+}
+player.dizerOi()
+playerEl.textContent=player.name+ ": R$"+ player.money
 
 function getRandomCard(){
   let randomNumber = Math.floor( Math.random()*13 )
@@ -85,3 +89,14 @@ if(hasSolvedChallenge || hasHintsLeft){
 function showSolution(){
   console.log("Showing the solution....")
 }
+
+const airbnbProperty = {
+  type:"castle",
+  cleaningLady:true,
+  roomFor:2,
+  furniture:['chair','table','bed']
+};
+
+console.log(airbnbProperty.length)
+console.log(airbnbProperty.type)
+console.log(airbnbProperty.furniture)
