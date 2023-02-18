@@ -1,33 +1,49 @@
-let randomNumber = Math.random()*22
-let firstCard = getRandomCard()
-let secondCard = getRandomCard()
-let cards = [firstCard] //array - ordered list ofitems
+let cards = [] //array - ordered list ofitems
+let sum=0
 let hasBlackJack = false
-let isAlive = true
-let sum = firstCard
-
+let isAlive = false
 let message = ""
 let messageEl = document.getElementById("message-el")
 let somaEl = document.querySelector("#soma-el")
 let cartasEl = document.querySelector("#cartas-el")
 
-function startGame() {
-  renderGame()
-}
+let playerName = "Vitor"
+let money = 150
+
+let playerEl = document.querySelector("#player-el")
+playerEl.textContent=playerName+ ": R$"+ money
 
 function getRandomCard(){
-  return Math.floor(
-    Math.random()*13
-  )
+  let randomNumber = Math.floor( Math.random()*13 )
+  if (randomNumber===1) {
+    return 11
+  }else if(randomNumber==11||randomNumber==12||randomNumber==13){
+    return 10
+  }else{
+    return randomNumber
+  }
+}
+
+function startGame() {
+  isAlive = true
+  let firstCard = getRandomCard()
+  let secondCard = getRandomCard()
+  cards = [firstCard,secondCard]
+  sum = firstCard+secondCard
+  console.log(cards)
+  console.log(sum)
+  renderGame()
 }
 
 function renderGame() {
   cartasEl.textContent = "Cartas: "
-
+  console.log(cards)
+  console.log(sum)
+  
   for (let i = 0; i < cards.length; i++) {
     cartasEl.textContent += cards[i]+ " "
   }
-
+  console.log("ASDa")
   somaEl.textContent = "Sum: " + sum
 
   if (sum <= 20) {
@@ -46,53 +62,26 @@ function renderGame() {
 }
 
 function newCard() {
-  let card2 = getRandomCard()
-  sum+=card2
-  cards.push(card2)
-  console.log(cards)
-  renderGame()
+  if(isAlive==true && hasBlackJack==false){
+    let card = getRandomCard()
+    sum+=card
+    cards.push(card)
+    console.log(cards)
+    renderGame()
+  }
 }
 
-// exercicio=================================
-// let messages = [
-//   "eai man",
-//   "fala qual a boa",
-//   "so na paz"
-// ]
+//exercicio
+let hasSolvedChallenge=0
+let hasHintsLeft=1
 
-// for(let i=0; i<messages.length; i++){
-//   console.log(messages[i])
-// }
-// console.log("===================")
-
-// for(let i=0; i<cards.length; i++){
-//   console.log(cards[i])
-// }
-// console.log("===================")
-
-// let exercicioEl = document.querySelector("#exercicio")
-
-// for(let i=0; i<messages.length; i++){
-//     exercicioEl.textContent+= messages[i] + " "
-// }
-
-//exercicio2
-
-// let player1Time=102
-// let player2Time=107
-
-// function getTotalRaceTime(){
-//   return player1Time+player2Time
-// }
-
-// console.log(getTotalRaceTime())
-
-// console.log(Math.floor( Math.random()*21 ))
-
-function rollDice(){
-  return Math.floor(
-    Math.random()*7
-  )
+if(hasSolvedChallenge || hasHintsLeft){
+  showSolution()
+}else{
+  console.log("You got this")
+  
 }
 
-console.log(rollDice())
+function showSolution(){
+  console.log("Showing the solution....")
+}
